@@ -12,6 +12,9 @@ def slice_and_stretch(matrix, N, M):
             stretched.append(matrix[i][j])
         if len(stretched) == 0:
             break
+        if N%2 == 1 and i == N//2:
+            result_list.append(stretched)
+            break
         for j in range(i+1, N - i):          #right top -> right bottom
             stretched.append(matrix[j][M-1-i])
         for j in count(M-2-i, -1):    #right bottom -> left bottom
@@ -19,11 +22,10 @@ def slice_and_stretch(matrix, N, M):
                 break
             stretched.append(matrix[N-1-i][j])
         for j in count(N-2-i, -1):    #left bottom -> left top
-            if j < 1 + i:
+            if j < 1 + i or (M%2 == 1 and i == M//2):
                 break
             stretched.append(matrix[j][i])
         result_list.append(stretched)
-    print(result_list)
     return result_list
 
 def rounding(stretched_lists, R):
@@ -40,6 +42,8 @@ def list_to_matrix(matrix, stretched_lists, N, M):
         for j in range(i, M-i):
             matrix[i][j] = stretched_lists[i][0]
             del stretched_lists[i][0]
+        if N%2 == 1 and N//2 == i:
+            break
         for j in range(i+1, N-i):
             matrix[j][M-1-i] = stretched_lists[i][0]
             del stretched_lists[i][0]
@@ -49,7 +53,7 @@ def list_to_matrix(matrix, stretched_lists, N, M):
             matrix[N-1-i][j] = stretched_lists[i][0]
             del stretched_lists[i][0]
         for j in count(N-2-i, -1):
-            if j < 1 + i:
+            if j < 1 + i or (M%2 == 1 and i == M//2):
                 break
             matrix[j][i] = stretched_lists[i][0]
             del stretched_lists[i][0]
