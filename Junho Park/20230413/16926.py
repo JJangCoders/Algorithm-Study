@@ -6,14 +6,11 @@ def modulus(a, b):
 
 def slice_and_stretch(matrix, N, M):
     result_list = []
-    for i in range(N):
+    for i in range(N//2):
         stretched = []
         for j in range(i, M - i):      #left top -> right top
             stretched.append(matrix[i][j])
         if len(stretched) == 0:
-            break
-        if N%2 == 1 and i == N//2:
-            result_list.append(stretched)
             break
         for j in range(i+1, N - i):          #right top -> right bottom
             stretched.append(matrix[j][M-1-i])
@@ -22,7 +19,7 @@ def slice_and_stretch(matrix, N, M):
                 break
             stretched.append(matrix[N-1-i][j])
         for j in count(N-2-i, -1):    #left bottom -> left top
-            if j < 1 + i or (M%2 == 1 and i == M//2):
+            if j < 1 + i:
                 break
             stretched.append(matrix[j][i])
         result_list.append(stretched)
@@ -42,8 +39,6 @@ def list_to_matrix(matrix, stretched_lists, N, M):
         for j in range(i, M-i):
             matrix[i][j] = stretched_lists[i][0]
             del stretched_lists[i][0]
-        if N%2 == 1 and N//2 == i:
-            break
         for j in range(i+1, N-i):
             matrix[j][M-1-i] = stretched_lists[i][0]
             del stretched_lists[i][0]
@@ -53,7 +48,7 @@ def list_to_matrix(matrix, stretched_lists, N, M):
             matrix[N-1-i][j] = stretched_lists[i][0]
             del stretched_lists[i][0]
         for j in count(N-2-i, -1):
-            if j < 1 + i or (M%2 == 1 and i == M//2):
+            if j < 1 + i:
                 break
             matrix[j][i] = stretched_lists[i][0]
             del stretched_lists[i][0]
