@@ -1,3 +1,6 @@
+import sys
+
+
 def check_group_word(word):
     group = {}
     before_ch = '0'
@@ -15,7 +18,7 @@ def check_group_word(word):
 
 result = 0
 
-for i in range(0, int(input())):
-    result += 1 if check_group_word(input()) else 0
+for i in range(0, int(sys.stdin.readline())):
+    result += 1 if check_group_word(sys.stdin.readline()) else 0
 
 print(result)
