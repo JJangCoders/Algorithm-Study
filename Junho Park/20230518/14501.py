@@ -9,7 +9,7 @@ from sys import stdin
 # number of days he will work
 N = int(stdin.readline())
 
-# list of tuples to store (day, length, profit) of consults
+# list of tuples to store (length, profit) of consults
 consults = []
 
 # loop N times
