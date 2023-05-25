@@ -1,5 +1,9 @@
+INFECTED = True
+NOT_INFECTED = False
+
+
 def check_infected_computer(computer_connections, start_computer, checked_computers):
-    checked_computers[start_computer] = True  # 현재 컴퓨터를 확인된 컴퓨터로 표시
+    checked_computers[start_computer] = INFECTED  # 현재 컴퓨터를 확인된 컴퓨터로 표시
 
     for connected_computer in computer_connections[start_computer]:  # 연결된 컴퓨터들을 확인
         if not checked_computers[connected_computer]:  # 아직 확인되지 않은 컴퓨터일 경우
@@ -17,8 +21,8 @@ for _ in range(connection_count):
     computer_connections[computer_2].append(computer_1)
 
 # 연산 편리성을 위해 0번 인덱스는 사용하지 않고 1번부터 사용
-checked_computers = [False] * (computer_count + 1)
+checked_computers = [NOT_INFECTED] * (computer_count + 1)
 
 check_infected_computer(computer_connections, 1, checked_computers)
 
-print(checked_computers.count(True) - 1)
+print(checked_computers.count(INFECTED) - 1)
