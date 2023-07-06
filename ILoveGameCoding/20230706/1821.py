@@ -1,3 +1,4 @@
+import sys
 from itertools import permutations
 
 
@@ -10,11 +11,10 @@ def check_triangle(permutation):
 
 
 def solution(n, f):
-    for permutation in permutations(range(1, n + 1)): # 1부터 n까지의 순열을 구한 후 각 순열에 대해 triangle 탐색
+    for permutation in permutations(range(1, n + 1)):  # 1부터 n까지의 순열을 구한 후 각 순열에 대해 triangle 탐색
         if check_triangle(list(permutation)) == f:
             return permutation
-    return None
 
 
-N, F = map(int, input().split())
+N, F = map(int, sys.stdin.readline().split())
 print(" ".join(str(num) for num in solution(N, F)))
