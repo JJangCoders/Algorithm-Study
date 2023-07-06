@@ -10,9 +10,9 @@ def check_triangle(permutation):
         return check_triangle(next_row)
 
 
-def solution(n, f):
-    for permutation in permutations(range(1, n + 1)):  # 1부터 n까지의 순열을 구한 후 각 순열에 대해 triangle 탐색
-        if check_triangle(list(permutation)) == f:
+def solution(numbers_at_top, number_at_bottom):
+    for permutation in permutations(range(1, numbers_at_top + 1)):  # 1부터 n까지의 순열을 구한 후 각 순열에 대해 triangle 탐색
+        if check_triangle(list(permutation)) == number_at_bottom:
             return permutation
 
 
