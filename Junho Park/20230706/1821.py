@@ -1,5 +1,5 @@
-# This is my solution for BaekJoon 1821 수들의 합 6
-# 
+# This is my solution for BaekJoon 1821 
+# 수들의 합 6
 # https://www.acmicpc.net/problem/1821
 
 # my initial approach

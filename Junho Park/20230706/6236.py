@@ -46,3 +46,32 @@ from sys import stdin
 
 # sol = solution()
 
+# Reference: https://velog.io/@deannn/BOJ-%EB%B0%B1%EC%A4%80-6236-%EC%9A%A9%EB%8F%88%EA%B4%80%EB%A6%AC-Python
+
+N, M = map(int, stdin.readline().split())
+money = []  # money for each day
+for _ in range(N):
+    money.append(int(stdin.readline()))
+
+# Two pointers
+left = min(money)
+right = sum(money)
+
+while left <= right:
+    mid = (left + right) // 2   # center value, temporary K
+    balance = mid               # cashing out
+    cnt = 1                     # cashing out count
+
+    for pay in money:
+        if balance < pay:
+            balance = mid
+            cnt += 1
+        balance -= pay
+    
+    if cnt > M or mid < max(money):
+        left = mid + 1
+    else:
+        right = mid - 1
+        K = mid
+
+print(K)
