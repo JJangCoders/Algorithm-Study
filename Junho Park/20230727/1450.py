@@ -1,7 +1,7 @@
 # This is my solution for BaekJoon 1450
 # 냅색문제
 # https://www.acmicpc.net/problem/1450
-
+# 
 # Reference: https://velog.io/@dark6ro/%EB%B0%B1%EC%A4%80-1450%EB%B2%88-%EB%83%85%EC%83%89%EB%AC%B8%EC%A0%9C
 
 from sys import stdin
