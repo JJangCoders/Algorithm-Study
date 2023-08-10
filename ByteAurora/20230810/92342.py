@@ -46,6 +46,3 @@ def solution(n, info):
                     answer = ryan_target_hits
 
     return answer
-
-
-print(solution(9, [0, 0, 1, 2, 0, 1, 1, 1, 1, 1, 1]))
