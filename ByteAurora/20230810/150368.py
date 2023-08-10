@@ -1,3 +1,5 @@
+from itertools import product
+
 possible_discounts = [10, 20, 30, 40]
 
 
@@ -29,23 +31,20 @@ def calculate_subscription_revenue(users, emoticons, discounts):
     return subscribe_count, total_sales
 
 
-def search_best_discount(users, emoticons, current_discounts):
-    if len(current_discounts) == len(emoticons):  # 모든 이모티콘에 할인율 적용완료 시
-        return calculate_subscription_revenue(users, emoticons, current_discounts)
-
+def search_best_discount(users, emoticons):
     best_subscribe_count = -1
     best_sales = -1
 
-    for discount in possible_discounts:  # 가능한 할인율을 각각의 이모티콘에 적용
-        current_result = search_best_discount(users, emoticons, current_discounts + [discount])
+    for discounts in product(possible_discounts, repeat=len(emoticons)):  # 가능한 할인율을 각각의 이모티콘에 적용
+        current_subscribe_count, current_sales = calculate_subscription_revenue(users, emoticons, discounts)
 
-        if current_result[0] > best_subscribe_count or (
-                current_result[0] == best_subscribe_count and current_result[1] > best_sales):
+        if current_subscribe_count > best_subscribe_count or (
+                current_subscribe_count == best_subscribe_count and current_sales > best_sales):
             # 구독자 수가 더 많거나, 구독자 수가 같은 경우 매출이 더 큰 경우
-            best_subscribe_count, best_sales = current_result
+            best_subscribe_count, best_sales = current_subscribe_count, current_sales
 
-    return [best_subscribe_count, int(best_sales)]
+    return [best_subscribe_count, best_sales]
 
 
 def solution(users, emoticons):
-    return search_best_discount(users, emoticons, [])
+    return search_best_discount(users, emoticons)
