@@ -19,6 +19,9 @@
 </table>
 <br/>
 
+[![mazandi profile](http://mazandi.herokuapp.com/api?handle=clcc001)](https://solved.ac/clcc001)
+[![mazandi profile](http://mazandi.herokuapp.com/api?handle=sonkim1001)](https://solved.ac/sonkim1001)
+
 ## 👦 스터디원
 <table>
  <tr>
